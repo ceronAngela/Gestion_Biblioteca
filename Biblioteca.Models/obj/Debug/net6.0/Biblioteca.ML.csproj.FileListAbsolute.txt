@@ -1,0 +1,11 @@
+D:\PROYECTOSPRUEBA\BIBLIOTECACAPAS\Biblioteca.Models\bin\Debug\net6.0\Biblioteca.ML.deps.json
+D:\PROYECTOSPRUEBA\BIBLIOTECACAPAS\Biblioteca.Models\bin\Debug\net6.0\Biblioteca.ML.dll
+D:\PROYECTOSPRUEBA\BIBLIOTECACAPAS\Biblioteca.Models\bin\Debug\net6.0\Biblioteca.ML.pdb
+D:\PROYECTOSPRUEBA\BIBLIOTECACAPAS\Biblioteca.Models\obj\Debug\net6.0\Biblioteca.ML.GeneratedMSBuildEditorConfig.editorconfig
+D:\PROYECTOSPRUEBA\BIBLIOTECACAPAS\Biblioteca.Models\obj\Debug\net6.0\Biblioteca.ML.AssemblyInfoInputs.cache
+D:\PROYECTOSPRUEBA\BIBLIOTECACAPAS\Biblioteca.Models\obj\Debug\net6.0\Biblioteca.ML.AssemblyInfo.cs
+D:\PROYECTOSPRUEBA\BIBLIOTECACAPAS\Biblioteca.Models\obj\Debug\net6.0\Biblioteca.ML.csproj.CoreCompileInputs.cache
+D:\PROYECTOSPRUEBA\BIBLIOTECACAPAS\Biblioteca.Models\obj\Debug\net6.0\Biblioteca.ML.dll
+D:\PROYECTOSPRUEBA\BIBLIOTECACAPAS\Biblioteca.Models\obj\Debug\net6.0\refint\Biblioteca.ML.dll
+D:\PROYECTOSPRUEBA\BIBLIOTECACAPAS\Biblioteca.Models\obj\Debug\net6.0\Biblioteca.ML.pdb
+D:\PROYECTOSPRUEBA\BIBLIOTECACAPAS\Biblioteca.Models\obj\Debug\net6.0\ref\Biblioteca.ML.dll

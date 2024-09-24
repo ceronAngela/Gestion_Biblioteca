@@ -1,0 +1,11 @@
+D:\PROYECTOSPRUEBA\BIBLIOTECACAPAS\Biblioteca.BLL\bin\Debug\net6.0\Biblioteca.BLL.deps.json
+D:\PROYECTOSPRUEBA\BIBLIOTECACAPAS\Biblioteca.BLL\bin\Debug\net6.0\Biblioteca.BLL.dll
+D:\PROYECTOSPRUEBA\BIBLIOTECACAPAS\Biblioteca.BLL\bin\Debug\net6.0\Biblioteca.BLL.pdb
+D:\PROYECTOSPRUEBA\BIBLIOTECACAPAS\Biblioteca.BLL\obj\Debug\net6.0\Biblioteca.BLL.GeneratedMSBuildEditorConfig.editorconfig
+D:\PROYECTOSPRUEBA\BIBLIOTECACAPAS\Biblioteca.BLL\obj\Debug\net6.0\Biblioteca.BLL.AssemblyInfoInputs.cache
+D:\PROYECTOSPRUEBA\BIBLIOTECACAPAS\Biblioteca.BLL\obj\Debug\net6.0\Biblioteca.BLL.AssemblyInfo.cs
+D:\PROYECTOSPRUEBA\BIBLIOTECACAPAS\Biblioteca.BLL\obj\Debug\net6.0\Biblioteca.BLL.csproj.CoreCompileInputs.cache
+D:\PROYECTOSPRUEBA\BIBLIOTECACAPAS\Biblioteca.BLL\obj\Debug\net6.0\Biblioteca.BLL.dll
+D:\PROYECTOSPRUEBA\BIBLIOTECACAPAS\Biblioteca.BLL\obj\Debug\net6.0\refint\Biblioteca.BLL.dll
+D:\PROYECTOSPRUEBA\BIBLIOTECACAPAS\Biblioteca.BLL\obj\Debug\net6.0\Biblioteca.BLL.pdb
+D:\PROYECTOSPRUEBA\BIBLIOTECACAPAS\Biblioteca.BLL\obj\Debug\net6.0\ref\Biblioteca.BLL.dll
