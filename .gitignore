@@ -1,0 +1,34 @@
+# Visual Studio
+.vscode/
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Archivos generados por compilación
+bin/
+obj/
+
+# Paquetes NuGet
+packages/
+*.nupkg
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Configuraciones locales
+*.local.json
+appsettings.Development.json
+
+# Archivos de publicación
+Publish/
+dist/
+
+# Logs
+*.log
+
+# Archivos del sistema operativo
+Thumbs.db
+.DS_Store
+
