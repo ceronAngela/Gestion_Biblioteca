@@ -2,14 +2,17 @@
 using Biblioteca.BLL.Service;
 using Biblioteca.ML;
 using Biblioteca.Web.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Globalization;
 
 namespace Biblioteca.Web.Controllers
 {
+    [Authorize]
     public class LibroController : Controller
     {
+        
         //Inyeccion de dependencias
         private readonly ILibroService _libroService;
 

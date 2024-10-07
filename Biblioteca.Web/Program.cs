@@ -48,9 +48,25 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Libro}/{action=Index}/{id?}");
-app.MapRazorPages();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Libro}/{action=Index}/{id?}");
+
+    //endpoints.MapGet("/", context =>
+    //{
+    //    context.Response.Redirect("/Identity/Account/Login");
+    //    return Task.CompletedTask;
+    //});
+
+    endpoints.MapRazorPages();
+});
+
+
+//app.MapControllerRoute(
+//    name: "default",
+//    pattern: "{controller=Account}/{action=Login}/{id?}");
+//app.MapRazorPages();
 
 app.Run();
