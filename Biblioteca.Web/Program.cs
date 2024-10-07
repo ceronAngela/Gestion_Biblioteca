@@ -2,6 +2,9 @@ using Biblioteca.Web.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Biblioteca.DAL.DataContext;
+using Biblioteca.DAL.Repository;
+using Biblioteca.ML;
+using Biblioteca.BLL.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,10 +12,18 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<Biblioteca_prueba1Context>(options =>
     options.UseSqlServer(connectionString));
+
+//cualquier controlador que use la interfaz lo va atrabajar dorectamente con librorepository
+//ya no se usa instancia a objetos sino por inyeccion de dependencias
+builder.Services.AddScoped<IGenericRepository<Libro>, LibroRepository>();
+
+//Para poder usar en el resto del proyecto
+builder.Services.AddScoped<ILibroService, LibroService>();
+
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+    .AddEntityFrameworkStores<Biblioteca_prueba1Context>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -24,7 +35,7 @@ if (app.Environment.IsDevelopment())
 }
 else
 {
-    app.UseExceptionHandler("/Home/Error");
+    app.UseExceptionHandler("/Libro/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
@@ -39,7 +50,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Libro}/{action=Index}/{id?}");
 app.MapRazorPages();
 
 app.Run();

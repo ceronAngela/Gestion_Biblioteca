@@ -11,6 +11,7 @@ namespace Biblioteca.BLL.Service
 {
     public class LibroService : ILibroService
     {
+        //injeccion de dependencias
         private readonly IGenericRepository<Libro> _libroRepo;
         public LibroService(IGenericRepository<Libro> libroRepo)
         {

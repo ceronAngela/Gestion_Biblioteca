@@ -1,12 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using Biblioteca.ML;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Biblioteca.DAL.DataContext
 {
-    public partial class Biblioteca_prueba1Context : DbContext
+    //public class ApplicationUser : IdentityUser
+    //{
+    //    // Agrega propiedades personalizadas si las necesitas
+    //}
+    public partial class Biblioteca_prueba1Context : IdentityDbContext
     {
         public Biblioteca_prueba1Context()
         {
@@ -26,7 +32,12 @@ namespace Biblioteca.DAL.DataContext
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // Es importante llamar a base.OnModelCreating para que Identity configure las tablas correctamente
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<IdentityUser>().ToTable("AspNetUsers");
+
             OnModelCreatingPartial(modelBuilder);
+
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);

@@ -1,0 +1,223 @@
+﻿﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="row">
+    <div class="col-sm-12">
+
+        <!--Inicio tarjeta-->
+        <div class="card">
+            <div class="card-header">Libros</div>
+            <div class="card-body">
+
+                <button class="btn btn-success" id="btnNuevo">Nuevo Libro</button>
+
+                <hr />
+
+                <table class="table table-striped" id="tbLibro">
+                    <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Autor</th>
+                            <th>Fecha Publicación</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        <!--Fin tarjeta-->
+
+    </div>
+</div>
+
+
+
+<!--Inicio Modal-->
+<div class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Detalle Libro</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="txtIdLibro" value="0" />
+                <div class="mb-2">
+                    <label>Título</label>
+                    <input type="text" class="form-control" id="txtTitulo" />
+                </div>
+                <div class="mb-2">
+                    <label>Autor</label>
+                    <input type="text" class="form-control" id="txtAutor" />
+                </div>
+                <div class="mb-2">
+                    <label>Fecha Publicación</label>
+                    <input type="date" class="form-control" id="txtFechaPublicacion" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="btnGuardar">Guardar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Fin Modal-->
+@section Scripts{
+
+    <script>
+
+        const Modelo_base = {
+            id : 0,
+            titulo : "",
+            autor : "",
+            fechaPublicacion : ""
+        }
+
+        $(document).ready(() =>{
+
+            listaLibros();
+        })
+
+        function mostrarModal(modelo){
+
+            $("#txtIdLibro").val(modelo.id);
+            $("#txtTitulo").val(modelo.titulo)
+            $("#txtAutor").val(modelo.autor)
+            $("#txtFechaPublicacion").val(modelo.fechaPublicacion)
+
+            $('.modal').modal('show');
+        }
+
+        $("#btnNuevo").click(() => {
+
+            mostrarModal(Modelo_base);
+        })
+
+        $("#btnGuardar").click(() => {
+            let NuevoModelo = Modelo_base;
+
+            NuevoModelo["id"] = $("#txtIdLibro").val();
+            NuevoModelo["titulo"]  = $("#txtTitulo").val();
+            NuevoModelo["autor"]  = $("#txtAutor").val();
+            NuevoModelo["fechaPublicacion"]  = $("#txtFechaPublicacion").val();
+
+            if($("#txtIdLibro").val() == "0"){
+                fetch("Libro/Insert",{
+                    method:"POST",
+                    headers: {
+                        'Content-Type': 'application/json;charset=utf-8'
+                    },
+                    body: JSON.stringify( NuevoModelo)
+                })
+                .then((response) => {
+                    return response.ok ? response.json() : Promise.reject(response)
+                })
+                .then((dataJson) => {
+
+                    if(dataJson.valor){
+                        alert("registrado");
+                          $('.modal').modal('hide');
+                         listaLibros();
+                    }
+                })
+            }else{
+                fetch("Libro/Update",{
+                        method:"PUT",
+                        headers: {
+                            'Content-Type': 'application/json;charset=utf-8'
+                        },
+                        body: JSON.stringify( NuevoModelo)
+                    })
+                    .then((response) => {
+                        return response.ok ? response.json() : Promise.reject(response)
+                    })
+                    .then((dataJson) => {
+
+                        if(dataJson.valor){
+                            alert("editado");
+                              $('.modal').modal('hide');
+                             listaLibros();
+                        }
+                    })
+
+            }
+
+        })
+
+        function listaLibros(){
+
+            fetch("Libro/List")
+            .then((response) => {
+                return response.ok ? response.json() : Promise.reject(response)
+            })
+            .then((dataJson) => {
+
+                $("#tbLibro tbody").html("");
+
+                dataJson.forEach((item) => {
+
+                    $("#tbLibro tbody").append(
+                        $("<tr>").append(
+                            $("<td>").text(item.titulo),
+                            $("<td>").text(item.autor),
+                            $("<td>").text(item.fechaPublicacion),
+                            $("<td>").append(
+                                $("<button>").addClass("btn btn-primary btn-sm me-2 btn-editar").data("modelo",item).text("Editar"),
+                                $("<button>").addClass("btn btn-danger btn-sm btn-eliminar").data("id",item.id).text("Eliminar")
+                            )
+                        )
+                    )
+
+                })
+
+
+            })
+
+        }
+
+        $("#tbContacto tbody").on("click",".btn-editar",function(){
+            let contacto = $(this).data("modelo")
+
+            mostrarModal(contacto)
+        })
+
+
+          $("#tbLibro tbody").on("click",".btn-eliminar",function(){
+            let idLibro = $(this).data("id")
+
+            let resultado = window.confirm("¿Desea eliminar el contacto?");
+
+
+            if(resultado){
+
+
+                  fetch("Libro/Delete?id=" + idLibro,{
+                        method:"DELETE"
+                    })
+                    .then((response) => {
+                        return response.ok ? response.json() : Promise.reject(response)
+                    })
+                    .then((dataJson) => {
+
+                        if(dataJson.valor){
+                             listaLibros();
+                        }
+                    })
+
+
+            }
+
+
+        })
+
+
+
+    </script>
+
+}
