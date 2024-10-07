@@ -12,7 +12,7 @@ namespace Biblioteca.DAL.DataContext
     //{
     //    // Agrega propiedades personalizadas si las necesitas
     //}
-    public partial class Biblioteca_prueba1Context : IdentityDbContext
+    public partial class Biblioteca_prueba1Context : IdentityDbContext<IdentityUser>
     {
         public Biblioteca_prueba1Context()
         {
@@ -34,6 +34,7 @@ namespace Biblioteca.DAL.DataContext
         {
             // Es importante llamar a base.OnModelCreating para que Identity configure las tablas correctamente
             base.OnModelCreating(modelBuilder);
+            //como tener los modelos
             modelBuilder.Entity<IdentityUser>().ToTable("AspNetUsers");
 
             OnModelCreatingPartial(modelBuilder);
